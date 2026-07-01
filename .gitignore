@@ -1,0 +1,13 @@
+# File yang tidak perlu di-upload ke GitHub
+*.sqlite
+*.xlsx
+*.zip
+export_*.php
+migrate_*.php
+multiply_*.php
+verify_*.php
+local_agent/
+
+# Jangan upload file uploads user
+public/uploads/*
+!public/uploads/.gitkeep
