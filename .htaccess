@@ -1,5 +1,16 @@
-Options -Indexes
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
+<IfModule mod_rewrite.c>
+    Options -Indexes
+    RewriteEngine On
+
+    # Jangan rewrite jika file / direktori memang ada di root
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Jangan rewrite jika sudah diawali /public/
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
+
+    # Arahkan semua request (file statis /css, /uploads & route) ke folder public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
