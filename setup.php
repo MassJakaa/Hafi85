@@ -1,4 +1,5 @@
 <?php
+die('Database setup sudah selesai dan dikunci untuk keamanan.');
 /**
  * HaFI85 Digital Printing — Setup Database (MySQL)
  * Jalankan sekali: php setup.php
